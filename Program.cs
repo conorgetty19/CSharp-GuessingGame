@@ -6,35 +6,45 @@ namespace GuessingGame
     {
         static void Main(string[] args)
         {
-            Random random = new Random();
-            int randomNumber = random.Next(1, 101);
-            Console.WriteLine(randomNumber.ToString());
-            for (int chances = 1; chances <= 4; chances++)
+            Console.WriteLine("Welcome to Guessing Game where you will attempt to guess my secret number betwen 1 and 100");
+            Console.WriteLine("Choose a difficulty by typing easy, medium, or hard: easy (8 guesses), medium (6), hard (4)");
+            string difficulty = Console.ReadLine();
+            int chances = 0;
+            while (chances == 0)
             {
-                if (chances == 1)
+                if (difficulty == "easy")
                 {
-                    Console.WriteLine("Would you like to guess my secret number? I'll give you four guesses");
+                    chances = 8;
+                }
+                else if (difficulty == "medium")
+                {
+                    chances = 6;
+                }
+                else if (difficulty == "hard")
+                {
+                    chances = 4;
                 }
                 else
                 {
-                    string prompt = "";
-                    switch (chances)
-                    {
-                        case 2:
-                            prompt = "three";
-                            break;
-                        case 3:
-                            prompt = "two";
-                            break;
-                        case 4:
-                            prompt = "one";
-                            break;
-                        default:
-                            // code block
-                            break;
-                    }
-                    Console.WriteLine($"You have {prompt} guess(es) left. What is your next guess?");
+                    Console.WriteLine("Invalid input. Please choose a difficulty by typing easy, medium, or hard:");
+                    difficulty = Console.ReadLine();
                 }
+            }
+            int runningChances = chances;
+            Random random = new Random();
+            int randomNumber = random.Next(1, 101);
+            Console.WriteLine(randomNumber.ToString());
+            while (runningChances > 0)
+            {
+                if (runningChances == chances)
+                {
+                    Console.WriteLine($"Okay. I'll give you {chances} guesses");
+                }
+                else
+                {
+                    Console.WriteLine($"You have {runningChances} guess(es) left. What is your next guess?");
+                }
+                runningChances--;
                 string guess = Console.ReadLine();
                 int guessNumber = Int16.Parse(guess);
                 if (guessNumber == randomNumber)
