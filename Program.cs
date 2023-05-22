@@ -8,7 +8,7 @@ namespace GuessingGame
         {
             Random random = new Random();
             int randomNumber = random.Next(1, 101);
-            string secretNumber = randomNumber.ToString();
+            Console.WriteLine(randomNumber.ToString());
             for (int chances = 1; chances <= 4; chances++)
             {
                 if (chances == 1)
@@ -36,14 +36,19 @@ namespace GuessingGame
                     Console.WriteLine($"You have {prompt} guess(es) left. What is your next guess?");
                 }
                 string guess = Console.ReadLine();
-                if (guess == secretNumber)
+                int guessNumber = Int16.Parse(guess);
+                if (guessNumber == randomNumber)
                 {
                     Console.WriteLine("You guessed it!");
                     break;
                 }
+                else if (guessNumber > randomNumber)
+                {
+                    Console.WriteLine("You failed... Your guess was too high!");
+                }
                 else
                 {
-                    Console.WriteLine("You failed...");
+                    Console.WriteLine("You failed... Your guess was too low!");
                 }
             }
         }
