@@ -1,0 +1,12 @@
+{
+    "launch": {
+        "configurations": [
+            {
+                "type": "coreclr",
+                "request": "launch",
+                "name": "Debug",
+                "console": "integratedTerminal"
+            }
+        ]
+    }
+}

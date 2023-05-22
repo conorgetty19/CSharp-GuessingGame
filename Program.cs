@@ -6,12 +6,14 @@ namespace GuessingGame
     {
         static void Main(string[] args)
         {
-            string secretNumber = "12";
+            Random random = new Random();
+            int randomNumber = random.Next(1, 101);
+            string secretNumber = randomNumber.ToString();
             for (int chances = 1; chances <= 4; chances++)
             {
                 if (chances == 1)
                 {
-                    Console.WriteLine("Would you like to guess my secret number?");
+                    Console.WriteLine("Would you like to guess my secret number? I'll give you four guesses");
                 }
                 else
                 {
@@ -19,19 +21,19 @@ namespace GuessingGame
                     switch (chances)
                     {
                         case 2:
-                            prompt = "second";
+                            prompt = "three";
                             break;
                         case 3:
-                            prompt = "third";
+                            prompt = "two";
                             break;
                         case 4:
-                            prompt = "fourth";
+                            prompt = "one";
                             break;
                         default:
                             // code block
                             break;
                     }
-                    Console.WriteLine($"What is your {prompt} guess?");
+                    Console.WriteLine($"You have {prompt} guess(es) left. What is your next guess?");
                 }
                 string guess = Console.ReadLine();
                 if (guess == secretNumber)
