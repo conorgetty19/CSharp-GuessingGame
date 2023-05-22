@@ -37,7 +37,6 @@ namespace GuessingGame
             int runningChances = chances;
             Random random = new Random();
             int randomNumber = random.Next(1, 101);
-            Console.WriteLine(randomNumber.ToString());
             while (runningChances > 0)
             {
                 if (runningChances == chances)
